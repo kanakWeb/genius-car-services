@@ -8,12 +8,12 @@ const Header = () => {
     return (
       <Navbar collapseOnSelect expand="lg" sticky='top' bg="primary" variant="dark">
   <Container>
-  <Navbar.Brand as={Link} to="home" ><img height="35px" src={logo} alt="" /></Navbar.Brand>
+  <Navbar.Brand as={Link} to="/home" ><img height="35px" src={logo} alt="" /></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
+      <Nav.Link href="home#service">Service</Nav.Link>
+      <Nav.Link href="home#experts">Experts</Nav.Link>
       <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -23,8 +23,8 @@ const Header = () => {
       </NavDropdown>
     </Nav>
     <Nav>
-      <Nav.Link href="#deets">About</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
+      <Nav.Link as={Link} to="about">About</Nav.Link>
+      <Nav.Link as={Link} eventKey={2} to="login">
         Login
       </Nav.Link>
     </Nav>

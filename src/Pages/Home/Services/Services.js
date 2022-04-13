@@ -13,8 +13,8 @@ const Services = () => {
     },[])
 
     return (
-        <div>
-          <h2 className='services-title my-5'>Our Services</h2> 
+        <div className=' my-4 ' id='service'>
+          <h2 className='services-title py-3'>Our Services</h2> 
           <div className='container services-container'>
           {
               services.map(service=><Service

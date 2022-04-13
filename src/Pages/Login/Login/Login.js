@@ -1,10 +1,18 @@
 import React, { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import auth from "../../../firebase.init";
 
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
 
   const emailRef = useRef("");
 
@@ -12,11 +20,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  if(user){
+      navigate('/home')
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
+    signInWithEmailAndPassword(email, password);
   };
 
   const navigateRegiester = () => {
@@ -51,15 +62,12 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
         <Button variant="primary" type="submit">
           Submit
         </Button>
         <p>
           New to genius car?
-          <Link to='/regiester' onClick={navigateRegiester} className="text-primary">
+          <Link to='/regiester' onClick={navigateRegiester} className="text-primary text-decoration-none">
             Please Regiester
           </Link>
         </p>

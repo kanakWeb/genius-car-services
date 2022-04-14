@@ -9,6 +9,7 @@ import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useState } from "react";
 import { async } from "@firebase/util";
+import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
   const [agree, setAgree] = useState();
@@ -26,6 +27,10 @@ const Register = () => {
   const navigatelogin = () => {
     navigate("/login");
   };
+
+  if (loading || updating) {
+    return <Loading></Loading>;
+  }
 
   /* if (user) {
     navigate("/home");
@@ -87,17 +92,18 @@ const Register = () => {
           type="submit"
           value="Regiester"
         />
-        <p>
-          New to genius car?
-          <Link
-            to="/login"
-            onClick={navigatelogin}
-            className="text-primary text-decoration-none"
-          >
-            already have an account
-          </Link>
-        </p>
       </form>
+      <p>
+        New to genius car?
+        <Link
+          to="/login"
+          onClick={navigatelogin}
+          className="text-primary text-decoration-none"
+        >
+          already have an account
+        </Link>
+      </p>
+
       <SocialLogin></SocialLogin>
     </div>
   );

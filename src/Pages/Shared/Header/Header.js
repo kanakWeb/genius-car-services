@@ -54,7 +54,7 @@ const Header = () => {
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="mx-2 btn btn-secondary"
+                className="mx-2 text-white text-decoration-none btn btn-link"
               >
                 Signout
               </button>

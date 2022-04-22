@@ -3,7 +3,7 @@ import React from 'react';
 const Checkout = () => {
     return (
         <div>
-         <p>checkout</p>
+         <p className='fs-3 py-5 text-center my-5 text-warning fw-bold'>Please cheackOut this</p>
         </div>
     );
 };

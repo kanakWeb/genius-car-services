@@ -10,6 +10,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { useState } from "react";
 import { async } from "@firebase/util";
 import Loading from "../../Shared/Loading/Loading";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 
 const Register = () => {
   const [agree, setAgree] = useState();
@@ -52,6 +53,7 @@ const Register = () => {
 
   return (
     <div className="regiester-from shadow-lg">
+      <PageTitle title="Regiester"></PageTitle>
       <h2 className="text-center p-2">Please Regiester</h2>
       <form onSubmit={handleRegiester}>
         <input

@@ -1,11 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import {useParams} from 'react-router-dom';
 import useServiceDetails from '../../hooks/useServiceDetails';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import {useAuthState} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
-import {toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
@@ -14,19 +14,18 @@ const Checkout = () => {
 
     const [user] = useAuthState(auth);
 
-    const handlePlaceOrder=e=>{
+    const handlePlaceOrder = e => {
         e.preventDefault()
-      const  order={
-        email:user.email,
-        service:service.name,
-        serviceId:serviceId,
-        address:e.target.address.value,
-        phone:e.target.phone.value
+        const order = {
+            email: user.email,
+            service: service.name,
+            serviceId: serviceId,
+            address: e.target.address.value,
+            phone: e.target.phone.value
         }
-        axios.post('http://localhost:5000/order',order)
-        .then(res=>{
-            const {data}=res;
-            if(data.insertedId){
+        axios.post('https://whispering-brushlands-88392.herokuapp.com/order', order).then(res => {
+            const {data} = res;
+            if (data.insertedId) {
                 toast('Done order')
                 e.target.reset();
             }
@@ -43,11 +42,27 @@ const Checkout = () => {
             </p>
 
             <form onSubmit={handlePlaceOrder}>
-                <input className='w-100 mb-2' type="text" value={user.displayName} name="name" id="" disabled/>
+                <input className='w-100 mb-2' type="text"
+                    value={
+                        user.displayName
+                    }
+                    name="name"
+                    id=""
+                    disabled/>
                 <br/>
-                <input className='w-100 mb-2' type="email" value={user.email} name="email" id="" disabled/>
+                <input className='w-100 mb-2' type="email"
+                    value={
+                        user.email
+                    }
+                    name="email"
+                    id=""
+                    disabled/>
                 <br/>
-                <input className='w-100 mb-2' type="text" name="name" id="" value={service.name} disabled/>
+                <input className='w-100 mb-2' type="text" name="name" id=""
+                    value={
+                        service.name
+                    }
+                    disabled/>
                 <br/>
                 <input className='w-100 mb-2' type="number" name="phone" id="" placeholder='Phone Number'/>
                 <br/>

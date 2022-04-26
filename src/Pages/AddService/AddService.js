@@ -7,16 +7,14 @@ const AddService = () => {
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
         console.log(data)
-        const url=`http://localhost:5000/service`
-        fetch(url,{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        const url = `https://whispering-brushlands-88392.herokuapp.com/service`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(data)
-        })
-        .then(res=>res.json())
-        .then(result=>{
+            body: JSON.stringify(data)
+        }).then(res => res.json()).then(result => {
             console.log(result);
         })
     };

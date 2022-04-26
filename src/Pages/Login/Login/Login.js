@@ -32,16 +32,15 @@ const Login = () => {
     }
 
 
-    if (user) {
-        // navigate(from, {replace: true});
+    if (user) { // navigate(from, {replace: true});
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('http://localhost:5000/login', {email})
-        localStorage.setItem('accessToken',data.accessToken)
+        const {data} = await axios.post('https://whispering-brushlands-88392.herokuapp.com/login', {email})
+        localStorage.setItem('accessToken', data.accessToken)
         navigate(from, {replace: true});
     };
 

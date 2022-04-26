@@ -22,7 +22,7 @@ const Orders = () => {
         setOrders(data);
       } catch (error) {
         console.log(error.message);
-        if (error.response === 401 || error.response.status) {
+        if (error.response.status === 401 || error.response.status===403) {
           signOut(auth);
           navigate("/login");
         }

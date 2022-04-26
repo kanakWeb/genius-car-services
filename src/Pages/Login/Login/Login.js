@@ -8,10 +8,11 @@ import {Link} from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from 'axios'
 import PageTitle from '../../Shared/PageTitle/PageTitle';
+import 'react-toastify/dist/ReactToastify.css';
+import useToken from '../../../hooks/useToken'
 
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
     const emailRef = useRef("");
 
     const passwordRef = useRef("");
-
+    const[token]=useToken(user)
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state ?. from ?. pathname || "/";
@@ -32,16 +33,15 @@ const Login = () => {
     }
 
 
-    if (user) { // navigate(from, {replace: true});
+    if (token) {  navigate(from, {replace: true});
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('https://whispering-brushlands-88392.herokuapp.com/login', {email})
-        localStorage.setItem('accessToken', data.accessToken)
-        navigate(from, {replace: true});
+        
+        
     };
 
     const navigateRegiester = () => {

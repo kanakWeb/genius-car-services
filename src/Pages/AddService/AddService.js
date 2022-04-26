@@ -7,7 +7,7 @@ const AddService = () => {
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
         console.log(data)
-        const url = `https://whispering-brushlands-88392.herokuapp.com/service`
+        const url = `https://ancient-inlet-61363.herokuapp.com/service`
         fetch(url, {
             method: 'POST',
             headers: {

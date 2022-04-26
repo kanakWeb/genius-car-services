@@ -11,6 +11,7 @@ import { useState } from "react";
 import { async } from "@firebase/util";
 import Loading from "../../Shared/Loading/Loading";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const [agree, setAgree] = useState();
@@ -23,6 +24,7 @@ const Register = () => {
   const [updateProfile, updating, Updateerror] =
     useUpdateProfile(auth);
 
+    const [token]=useToken(user)
   const navigate = useNavigate();
 
   const navigatelogin = () => {
@@ -33,9 +35,9 @@ const Register = () => {
     return <Loading></Loading>;
   }
 
-  /* if (user) {
+  if (token) {
     navigate("/home");
-  } */
+  }
   const handleRegiester = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;

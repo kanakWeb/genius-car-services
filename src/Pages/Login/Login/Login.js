@@ -33,7 +33,7 @@ const Login = () => {
     }
 
 
-    if (token) {  navigate(from, {replace: true});
+    if (token) {   navigate(from, {replace: true}); 
     }
     const handleSubmit = async (event) => {
         event.preventDefault();

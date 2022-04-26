@@ -14,7 +14,7 @@ const Orders = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const getOrders = async () => {
-      const email = user.email;
+      const email = user?.email;
       const url = `https://ancient-inlet-61363.herokuapp.com/order?email=${email}`;
 
       try {
